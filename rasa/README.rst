@@ -14,4 +14,4 @@
 
 **Testing Bot**
 
-- Check the application at ``<http://127.0.0.1:7000/chat_app/>``
+- Check the application at <http://127.0.0.1:7000/chat_app/>
