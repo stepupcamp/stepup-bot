@@ -33,3 +33,46 @@
 ## set reminder
 * set_reminder
   - utter_set_reminder
+
+## reminder happy path
+* greet
+  - utter_greet
+* affirm
+  - reminder_form
+  - form{"name": "reminder_form"}
+  - form{"name": null}
+  - utter_set_reminder
+* goodbye
+  - utter_goodbye
+
+## no reminder
+* greet
+    - utter_greet
+* deny
+    - utter_goodbye
+
+## reminder stop
+* greet
+    - utter_greet
+* affirm
+    - reminder_form
+    - form{"name": "reminder_form"}
+* out_of_scope
+    - utter_ask_continue
+* deny
+    - action_deactivate_form
+    - form{"name": null}
+    - utter_goodbye
+
+## reminder continue
+* greet
+    - utter_greet
+* affirm
+    - reminder_form
+    - form{"name": "reminder_form"}
+* out_of_scope
+    - utter_ask_continue
+* affirm
+    - reminder_form
+    - form{"name": null}
+    - utter_set_reminder
