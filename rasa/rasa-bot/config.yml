@@ -1,3 +1,7 @@
+# The config recipe.
+# https://rasa.com/docs/rasa/model-configuration/
+recipe: default.v1
+
 # Configuration for Rasa NLU.
 # https://rasa.com/docs/rasa/nlu/components/
 language: en
@@ -27,14 +31,20 @@ pipeline:
   - name: "DucklingEntityExtractor"
     # url of the running duckling server
     url: "http://localhost:8000"
-    timezome: "India/Kolkata"
     # dimensions to extract
     dimensions: ["time"]
-    
+    # allows you to configure the locale, by default the language is
+    # used
+    # if not set the default timezone of Duckling is going to be used
+    # needed to calculate dates from relative expressions like "tomorrow"
+    timezone: "Indian/Kolkata"
+    # Timeout for receiving response from http url of the running duckling server
+    # if not set the default timeout of duckling http url is set to 3 seconds.
+    timeout : 3
+
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/
 policies:
-- name: FormPolicy
 # # No configuration for policies was provided. The following default policies were used to train your model.
 # # If you'd like to customize them, uncomment and adjust the policies.
 # # See https://rasa.com/docs/rasa/policies for more information.

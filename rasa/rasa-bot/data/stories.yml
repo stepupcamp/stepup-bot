@@ -1,4 +1,4 @@
-version: "2.0"
+version: "3.0"
 
 stories:
 
@@ -29,7 +29,12 @@ stories:
   - intent: deny
   - action: utter_goodbye
 
-- story: set reminder
+- story: valid meeting creation
   steps:
-  - intent: set_reminder
-  - action: utter_set_reminder
+  - intent: valid_create_meeting
+  - action: action_valid_meeting
+
+- story: invalid meeting creation
+  steps:
+  - intent: invalid_create_meeting
+  - action: action_invalid_meeting
