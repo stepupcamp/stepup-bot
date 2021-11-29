@@ -39,12 +39,12 @@ stories:
   - intent: invalid_create_meeting
   - action: action_invalid_meeting
 
-- story: create reminder happy path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: create_reminder
-  - action: reminder_form
-  - active_loop: reminder_form
-  - action: utter_reminder_form_slots_values
-  - active_loop: null
+# - story: create reminder happy path
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: create_reminder
+#   - action: reminder_form
+#   - active_loop: reminder_form
+#   - action: utter_reminder_form_slots_values
+#   - active_loop: null

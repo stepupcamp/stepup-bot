@@ -10,7 +10,10 @@ intents:
   - bot_challenge
   - valid_create_meeting
   - invalid_create_meeting
-  - create_reminder
+  - create_reminder:
+      use_entities:
+        - time
+        - reminder_subject
 
 entities:
   - time
@@ -26,12 +29,20 @@ slots:
       conditions:
         - active_loop: reminder_form
           requested_slot: reminder_subject
+  time:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: time
+      conditions:
+        - active_loop: reminder_form
+          requested_slot: time
 
 actions:
   - action_valid_meeting
   - action_invalid_meeting
-  - action_ask_reminder_form_time
-  - action_ask_reminder_form_reminder_subject
+  # - action_ask_reminder_form_time
+  # - action_ask_reminder_form_reminder_subject
   - action_create_reminder
 
 
