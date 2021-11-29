@@ -16,7 +16,18 @@ venv.bak/
 .mypy_cache/
 
 .DS_Store
+*.DS_Store
 .~*
 .vscode/
 .idea/
-.rasa/cache/*
+
+# RASA 
+.rasa/
+models/
+graph.png
+graph.html
+story_graph.html
+story_graph.dot
+rasa.db
+rasa.db-shm
+rasa.db-wal
