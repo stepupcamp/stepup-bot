@@ -115,3 +115,37 @@ nlu:
     - Can you start a meeting everyday at this time?
     - Do start a similar meeting every sunday at the same time?
     - How about making this a recurring meeting everyday at the 2pm?
+
+- intent: create_reminder
+  examples: |
+    - Please, schedule a reminder for me [today](time).
+    - Please, schedule a reminder for me [right now](time).
+    - Can you remind me to [study]{"entity":"reminder_subject","value":"study"} [everyday in morning](time)?
+    - Can you remind me to [study]{"entity":"reminder_subject","value":"study"} [everyday at night](time)?
+    - Can you remind me to [call my mother]{"entity":"reminder_subject","value":"call"} everyday?
+    - Can you please schedule a reminder for me to [watch my online lectures]{"entity":"reminder_subject","value":"watch my online lectures"} [everyday](time)?
+    - Can you please schedule a reminder for me to [do my homework]{"entity":"reminder_subject","value":"homework"} [everyday](time)?
+    - Can you please schedule a reminder for me to [take an online test]{"entity":"reminder_subject","value":"online test"} [everyday](time)?
+    - Remind me to book an one-on-one interview session with my mentor today.
+    - Add an event to my calendar.
+    - Remind me to go to bed before 10PM everyday.
+    - Can you remind me about my gym class tomorrow at 2PM?
+    - Do remind me about the meeting with Sneha.
+    - Don't let me forget about my meeting with Sneha tomorrrow.
+    - Recall me about my tomorrow's extra class.
+    - Recall me about my tomorrow's parent teacher meeting.
+    - Can you set up an alert for me to [study]{"entity":"reminder_subject","value":"study"} [everyday in morning](time)?
+    - Can you set up an alert for me to [study]{"entity":"reminder_subject","value":"study"} [everyday at night](time)?
+    - Can you set up an alert for me to [call my mother]{"entity":"reminder_subject","value":"call"} everyday?
+    - Can you please schedule an alert for me to [watch my online lectures]{"entity":"reminder_subject","value":"watch my online lectures"} [everyday](time)?
+    - Can you please schedule an alert for me to [do my homework]{"entity":"reminder_subject","value":"homework"} [everyday](time)?
+    - Can you please schedule an alert for me to take an [online test]{"entity":"reminder_subject","value":"online_test"} [everyday](time)?
+    - Can you remind me about my friend's birthday [tomorrow](time)?
+    - Can you remind me [to send an email]{"entity":"reminder_subject","value":"email"} to my professor?
+    - Can you remind me [to attend standup meeting]{"entity":"reminder_subject","value":"meeting"} daily at 10 AM?
+    - Can you add this [event]{"entity":"reminder_subject","value":"event"} with my friend?
+    - Please don't forget about the [event]{"entity":"reminder_subject","value":"event"} with Sneha today at six pm?
+    - Please give me a two hour warning before next saturday's [meeting]{"entity":"reminder_subject","value":"meeting"}?
+    - Please give me a two hour warning before next saturday's [test]{"entity":"reminder_subject","value":"test"}?
+    - Please give me a two hour warning before next sunday's [interview]{"entity":"reminder_subject","value":"interview"}?
+    - Set up an notification for my medicines at 10 PM everyday.

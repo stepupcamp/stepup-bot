@@ -1,1 +1,0 @@
-{"max_history": null, "py/object": "rasa.core.featurizers.tracker_featurizers.MaxHistoryTrackerFeaturizer", "remove_duplicates": true, "state_featurizer": null}

@@ -10,14 +10,39 @@ intents:
   - bot_challenge
   - valid_create_meeting
   - invalid_create_meeting
+  - create_reminder
 
 entities:
-  # - time
+  - time
   - meeting_link
+  - reminder_subject
+
+slots:
+  reminder_subject:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: reminder_subject
+      conditions:
+        - active_loop: reminder_form
+          requested_slot: reminder_subject
 
 actions:
   - action_valid_meeting
   - action_invalid_meeting
+  - action_ask_reminder_form_time
+  - action_ask_reminder_form_reminder_subject
+  - action_create_reminder
+
+
+forms:
+  reminder_form:
+    ignored_intents:
+      - valid_create_meeting
+      - invalid_create_meeting
+    required_slots:
+      - reminder_subject
+      - time
 
 responses:
   utter_greet:
@@ -39,6 +64,7 @@ responses:
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
 
+  ####### wrt meeting link intent #######
   utter_meeting_created:
   - text: "Sure. Please click this link to start an instant Google meet: {meeting_link}."
   - text: "Ofcourse. Click this link to start Google meet now:  {meeting_link}."
@@ -47,6 +73,33 @@ responses:
   utter_meeting_not_allowed:
   - text: "Sorry, recurring meeting or scheduled future meetings not supported. Please click {meeting_link} if you want to start a Google meet now."
 
+  ####### wrt creating a reminder intent #######
+  utter_default:
+  - text: "Sorry, I didn't get that 🤷. Could you please rephrase?"
+  - text: "I didn't understand, could you rephrase that?"
+  - text: "I'm sorry, but I didn't understand you. Could you please rephrase what you just said?"
+  - text: "I'm afraid I didn't get what you just said. Could you rephrase that?"
+  - text: "I didn't quite get that, could you rephrase your message?"
+  - text: "Could you rephrase your message? I didn't get it, I'm sorry."
+
+  utter_ask_continue:
+    - text: "Sorry, I don't quite understand. Do you want to continue?"
+  
+  # we are following utter_ask_<form_name>_<slot_name>.
+  utter_ask_reminder_form_time:
+    - text: "At what time do you want me to setup the reminder for you?"
+    - text: "Can you tell me at what date and time you want me to alert you?"
+    - text: "Can you help me with as to when should I remind you precisely?"
+
+  utter_ask_reminder_form_reminder_subject:
+    - text: "Can you please share what do you want me to remind you about?"
+    - text: "Can you please share what do you want me to alert you about?"
+    - text: "Can you please share what to remind you about?"
+    - text: "What do you want me to remind you about?"
+  
+  utter_reminder_form_slots_values:
+    - text: "You've submitted the following details: \n
+              - Reminder set for {reminder_subject} on {time}..."
 
 session_config:
   session_expiration_time: 60
