@@ -73,6 +73,7 @@ responses:
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
 
+  ####### wrt meeting link intent #######
   utter_meeting_created:
   - text: "Sure. Please click this link to start an instant Google meet: {meeting_link}."
   - text: "Ofcourse. Click this link to start Google meet now:  {meeting_link}."
