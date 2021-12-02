@@ -1,0 +1,33 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env*
+.venv*
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# mypy
+.mypy_cache/
+
+.DS_Store
+*.DS_Store
+.~*
+.vscode/
+.idea/
+
+# RASA 
+.rasa/
+models/
+graph.png
+graph.html
+story_graph.html
+story_graph.dot
+rasa.db
+rasa.db-shm
+rasa.db-wal

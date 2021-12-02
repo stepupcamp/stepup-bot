@@ -90,6 +90,21 @@ nlu:
     - am I talking to a bot?
     - am I talking to a human?
 
+# - intent: valid_create_meeting
+#   examples: |
+#     - Bot Can you please create a google meet [right now]{"entity":"time","role":"meeting"}…
+#     - Bot Please start a meeting
+#     - Bot Please start a meet [now]{"entity":"time","role":"meeting"}
+#     - Bot Launch a meeting [right away]{"entity":"time","role":"meeting"}
+#     - Bot Schedule a meeting right now
+#     - Bot Could you start a meeting right now
+#     - Bot start meeting
+#     - Please schedule a meeting for us
+#     - start a meeting for us
+#     - create a google meet for me
+#     - launch a meeting for us
+#     - create a meeting link for us
+
 - intent: valid_create_meeting
   examples: |
     - Bot Can you please create a google meet right now…
@@ -115,3 +130,80 @@ nlu:
     - Can you start a meeting everyday at this time?
     - Do start a similar meeting every sunday at the same time?
     - How about making this a recurring meeting everyday at the 2pm?
+
+# - intent: inform_reminder
+#   examples: |
+#     - Please, schedule a reminder for me to [buy milk](reminder_subject) [today](time){"entity":"time","role":"reminder"}.
+#     - Can you create a reminder for me to [study](reminder_subject) everyday.
+#     - Can you remind me to [study](reminder_subject) [everyday in morning]{"entity":"time","role":"reminder"}?
+#     - Can you remind me to [study](reminder_subject) [everyday at night]{"entity":"time","role":"reminder"}?
+#     - Can you remind me to [call my mother](reminder_subject) [everyday]{"entity":"time","role":"reminder"}?
+#     - Can you please schedule a reminder for me to [watch my online lectures](reminder_subject) [everyday]{"entity":"time","role":"reminder"}?
+#     - Can you please schedule a reminder for me to [do my homework](reminder_subject) [everyday]{"entity":"time","role":"reminder"}?
+#     - Can you please schedule a reminder for me to [take an online test](reminder_subject) [everyday]{"entity":"time","role":"reminder"}?
+#     - Remind me to [book an one-on-one interview session with my mentor](reminder_subject) [today]{"entity":"time","role":"reminder"}.
+#     - Remind me to [go to bed](reminder_subject) [before 10PM everyday]{"entity":"time","role":"reminder"}.
+#     - Can you remind me about my [gym class](reminder_subject) tomorrow at 2PM?
+#     - Don't let me forget about my [meeting with Sneha](reminder_subject) tomorrrow.
+#     - Recall me about my tomorrow's [extra class](reminder_subject).
+#     - Recall me about my tomorrow's [parent teacher meeting](reminder_subject).
+#     - Can you set up an alert for me to [study](reminder_subject) [everyday in morning]{"entity":"time","role":"reminder"}?
+#     - Can you set up an alert for me to [study](reminder_subject) [everyday at night]{"entity":"time","role":"reminder"}?
+#     - Can you set up an alert for me to [call my mother](reminder_subject) everyday?
+#     - Can you please schedule an alert for me to [watch my online lectures](reminder_subject) [everyday]{"entity":"time","role":"reminder"}?
+#     - Can you please schedule an alert for me to [do my homework](reminder_subject) [everyday]{"entity":"time","role":"reminder"}?
+#     - Can you please schedule an alert for me to take an [online test](reminder_subject) [everyday]{"entity":"time","role":"reminder"}?
+#     - Can you remind me about my friend's birthday [tomorrow]{"entity":"time","role":"reminder"}?
+#     - Can you remind me to [send an email](reminder_subject) to my professor?
+#     - Can you remind me to [attend standup meeting](reminder_subject) daily at 10 AM?
+#     - Set up an notification [for my medicines](reminder_subject) at [10 PM everyday]{"entity":"time","role":"reminder"}.
+#     - [today]{"entity":"time","role":"reminder"}
+#     - [everyday in morning]{"entity":"time","role":"reminder"}
+#     - [tomorrow at 2PM]{"entity":"time","role":"reminder"}
+#     - [6am]{"entity":"time","role":"reminder"}
+#     - [tommorrow]{"entity":"time","role":"reminder"}
+#     - [everyday]{"entity":"time","role":"reminder"}
+
+- intent: create_reminder
+  examples: |
+    - Please, schedule a reminder for me.
+    - Can you create a reminder for me.
+    - Can you please schedule a reminder for me?
+    - Add an event to my calendar.
+    - Can you set up an alert for me
+    - Can you please schedule an alert for me
+    - Set up a notification for me.
+    - Please remind me.
+
+- intent: inform_reminder
+  examples: |
+    - Please, schedule a reminder for me to [buy milk](reminder_subject) [today](time).
+    - Can you create a reminder for me to [study](reminder_subject) everyday.
+    - Can you remind me to [study](reminder_subject) [everyday in morning](time)?
+    - Can you remind me to [study](reminder_subject) [everyday at night](time)?
+    - Can you remind me to [call my mother](reminder_subject) [everyday](time)?
+    - Can you please schedule a reminder for me to [watch my online lectures](reminder_subject) [everyday](time)?
+    - Can you please schedule a reminder for me to [do my homework](reminder_subject) [everyday](time)?
+    - Can you please schedule a reminder for me to [take an online test](reminder_subject) [everyday](time)?
+    - Remind me to [book an one-on-one interview session with my mentor](reminder_subject) [today](time).
+    - Remind me to [go to bed](reminder_subject) [before 10PM everyday](time).
+    - Can you remind me about my [gym class](reminder_subject) tomorrow at 2PM?
+    - Don't let me forget about my [meeting with Sneha](reminder_subject) tomorrrow.
+    - Recall me about my tomorrow's [extra class](reminder_subject).
+    - Recall me about my tomorrow's [parent teacher meeting](reminder_subject).
+    - Can you set up an alert for me to [study](reminder_subject) [everyday in morning](time)?
+    - Can you set up an alert for me to [study](reminder_subject) [everyday at night](time)?
+    - Can you set up an alert for me to [call my mother](reminder_subject) everyday?
+    - Can you please schedule an alert for me to [watch my online lectures](reminder_subject) [everyday](time)?
+    - Can you please schedule an alert for me to [do my homework](reminder_subject) [everyday](time)?
+    - Can you please schedule an alert for me to take an [online test](reminder_subject) [everyday](time)?
+    - Can you remind me about my friend's birthday [tomorrow](time)?
+    - Can you remind me to [send an email](reminder_subject) to my professor?
+    - Can you remind me to [attend standup meeting](reminder_subject) daily at 10 AM?
+    - Set up an notification [for my medicines](reminder_subject) at [10 PM everyday](time).
+    - [today](time)
+    - [everyday in morning](time)
+    - [tomorrow at 2PM](time)
+    - [6am](time)
+    - [tommorrow](time)
+    - [everyday](time)

@@ -1,0 +1,54 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-reminder_subject",
+      "2": "I-reminder_subject",
+      "3": "L-reminder_subject",
+      "4": "U-reminder_subject",
+      "5": "B-time",
+      "6": "I-time",
+      "7": "L-time",
+      "8": "U-time",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-reminder_subject": 1,
+      "I-reminder_subject": 2,
+      "L-reminder_subject": 3,
+      "U-reminder_subject": 4,
+      "B-time": 5,
+      "I-time": 6,
+      "L-time": 7,
+      "U-time": 8,
+      "O": 0
+    },
+    "num_tags": 9
+  },
+  {
+    "tag_name": "role",
+    "ids_to_tags": {
+      "1": "B-meeting",
+      "2": "I-meeting",
+      "3": "L-meeting",
+      "4": "U-meeting",
+      "5": "B-reminder",
+      "6": "I-reminder",
+      "7": "L-reminder",
+      "8": "U-reminder",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-meeting": 1,
+      "I-meeting": 2,
+      "L-meeting": 3,
+      "U-meeting": 4,
+      "B-reminder": 5,
+      "I-reminder": 6,
+      "L-reminder": 7,
+      "U-reminder": 8,
+      "O": 0
+    },
+    "num_tags": 9
+  }
+]

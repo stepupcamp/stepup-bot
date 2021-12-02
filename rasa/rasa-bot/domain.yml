@@ -10,14 +10,48 @@ intents:
   - bot_challenge
   - valid_create_meeting
   - invalid_create_meeting
+  - create_reminder
+  - inform_reminder
 
 entities:
-  # - time
+  - time
   - meeting_link
+  - reminder_subject
+
+slots:
+  reminder_subject:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: reminder_subject
+      conditions:
+        - active_loop: reminder_form
+          requested_slot: reminder_subject
+  time:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: time
+      conditions:
+        - active_loop: reminder_form
+          requested_slot: time
 
 actions:
   - action_valid_meeting
   - action_invalid_meeting
+  # - utter_ask_continue
+  # - action_ask_reminder_form_time
+  # - action_ask_reminder_form_reminder_subject
+  - action_create_reminder
+
+forms:
+  reminder_form:
+    ignored_intents:
+      - valid_create_meeting
+      - invalid_create_meeting
+    required_slots:
+      - reminder_subject
+      - time
 
 responses:
   utter_greet:
@@ -46,6 +80,26 @@ responses:
 
   utter_meeting_not_allowed:
   - text: "Sorry, recurring meeting or scheduled future meetings not supported. Please click {meeting_link} if you want to start a Google meet now."
+
+  ####### wrt creating a reminder intent #######
+  utter_ask_continue:
+  - text: "Sorry, I don't quite understand. Do you want to continue?"
+  
+  # we are following utter_ask_<form_name>_<slot_name>.
+  utter_ask_reminder_form_time:
+  - text: "At what time do you want me to setup the reminder for you?"
+  - text: "Can you tell me at what date and time you want me to alert you?"
+  - text: "Can you help me with as to when should I remind you precisely?"
+
+  utter_ask_reminder_form_reminder_subject:
+  - text: "Can you please share what do you want me to remind you about?"
+  - text: "Can you please share what do you want me to alert you about?"
+  - text: "Can you please share what to remind you about?"
+  - text: "What do you want me to remind you about?"
+  
+  utter_reminder_form_slots_values:
+  - text: "You've submitted the following details: \n
+          - Reminder set for {reminder_subject} on {time}..."
 
 
 session_config:
