@@ -12,7 +12,7 @@ from typing import Any, Text, Dict, List, Union
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import EventType, SlotSet, AllSlotsReset
-# from rasa.core.actions.forms import FormAction
+from rasa.core.actions.forms import FormAction
 
 
 class ActionValidMeeting(Action):
@@ -27,7 +27,8 @@ class ActionValidMeeting(Action):
     ) -> List[Dict[Text, Any]]:
 
         link = "https://meet.google.com/nmv-jxcq-txo"
-        dispatcher.utter_template("utter_meeting_created", tracker, meeting_link=link)
+        dispatcher.utter_template(
+            "utter_meeting_created", tracker, meeting_link=link)
 
         return []
 
@@ -44,14 +45,9 @@ class ActionInvalidMeeting(Action):
     ) -> List[Dict[Text, Any]]:
 
         link = "https://meet.google.com/nmv-jxcq-txo"
-        dispatcher.utter_template("utter_meeting_not_allowed", tracker, meeting_link=link)
+        dispatcher.utter_template(
+            "utter_meeting_not_allowed", tracker, meeting_link=link)
 
-    def run(
-        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
-    ) -> List[EventType]:
-        dispatcher.utter_message(template="utter_reminder_form_slots_values",
-                                time=tracker.get_slot("time"),
-                                reminder_subject=tracker.get_slot("reminder_subject"))
         return []
 
 
@@ -64,11 +60,22 @@ class ValidateReminderForm(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         required_slots = ["time", "reminder_subject"]
+        # extract other slots that were not requested
+        # but set by corresponding entity
+        slot_values = self.extract_other_slots(dispatcher, tracker, domain)
 
         for slot_name in required_slots:
-            if tracker.slot.get(slot_name) is None:
-                # The slot is not filled yet, request the user to fill the slot next time.
+            slot_to_fill = tracker.get_slot(slot_name)
+            if slot_to_fill:
+                slot_values.update(self.extract_requested_slot(dispatcher,
+                                                            tracker, domain))
+            else:
                 return [SlotSet("requested_slot", slot_name)]
+
+        # for slot_name in required_slots:
+        #     if tracker.slot.get(slot_name) is None:
+        #         # The slot is not filled yet, request the user to fill the slot next time.
+        #         return [SlotSet("requested_slot", slot_name)]
 
         return [SlotSet("requested_slot", None)]
 
@@ -80,7 +87,7 @@ class ActionCreateReminder(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-            
+
         dispatcher.utter_message(template="utter_reminder_form_slots_values",
                                 time=tracker.get_slot("time"),
                                 reminder_subject=tracker.get_slot("reminder_subject"))
@@ -133,3 +140,57 @@ class ActionCreateReminder(Action):
 
 #         dispatcher.utter_message("utter_reminder_form_slots_values")
 #         return []
+
+# class ActionCreateReminder(FormAction):
+#     """Example of a custom form action"""
+
+#     def name(self):
+#         """Unique identifier of the form"""
+#         return "action_create_reminder"
+
+#     @staticmethod
+#     def required_slots(tracker: Tracker) -> List[Text]:
+#         """A list of required slots that the form has to fill"""
+
+#         return ["reminder_subject", "time"]
+
+#     def validate(self,
+#                  dispatcher: CollectingDispatcher,
+#                  tracker: Tracker,
+#                  domain: Dict[Text, Any]) -> List[Dict]:
+#         """Validate extracted requested slot
+#                 else reject the execution of the form action
+#         """
+#         # extract other slots that were not requested
+#         # but set by corresponding entity
+#         slot_values = self.extract_other_slots(dispatcher, tracker, domain)
+
+#         # extract requested slot
+#         required_slots = ["time", "reminder_subject"]
+
+#         for slot_name in required_slots:
+#             slot_to_fill = tracker.get_slot(slot_name)
+#             if slot_to_fill:
+#                 slot_values.update(self.extract_requested_slot(dispatcher,
+#                                                             tracker, domain))
+#                 # if not slot_values:
+#                 #     # reject form action execution
+#                 #     # if some slot was requested but nothing was extracted
+#                 #     # it will allow other policies to predict another action
+#                 #     raise ActionExecutionRejection(self.name(),
+#                 #                                 "Failed to validate slot {0}"
+#                 #                                 "with action {1}"
+#                 #                                 "".format(slot_to_fill,
+#                 #                                             self.name()))
+
+
+#     def submit(
+#         self, dispatcher: CollectingDispatcher,
+#         tracker: Tracker
+#     ):
+#         """Define what the form has to do
+#                 after all required slots are filled"""
+
+#         dispatcher.utter_template('utter_reminder_form_slots_values', tracker)
+
+#         return [AllSlotsReset()]

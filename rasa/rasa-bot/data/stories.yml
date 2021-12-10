@@ -48,3 +48,26 @@ stories:
 #   - active_loop: reminder_form
 #   - action: utter_reminder_form_slots_values
 #   - active_loop: null
+
+# - story: stop reminder form + continue
+#   steps:
+#   - intent: create_reminder
+#   - action: reminder_form
+#   - active_loop: reminder_form
+#   - intent: stop
+#   - action: utter_ask_continue
+#   - intent: affirm
+#   - action: reminder_form
+#   - active_loop: null
+#   - action: utter_reminder_form_slots_values
+
+# - story: stop reminder form + stop
+#   steps:
+#   - intent: create_reminder
+#   - action: reminder_form
+#   - active_loop: reminder_form
+#   - intent: stop
+#   - action: utter_ask_continue
+#   - intent: deny
+#   - action: action_deactivate_loop
+#   - active_loop: null
