@@ -95,6 +95,41 @@ class ActionCreateReminder(Action):
         return [AllSlotsReset()]
 
 
+class ActionInformReminder(Action):
+    def name(self) -> Text:
+        return "action_inform_reminder"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        time_slot_value = next(tracker.get_latest_entity_values("time"), None)
+        rm_slot_value = next(tracker.get_latest_entity_values("reminder_subject"), None)
+
+        # print("Time Slot value:", time_slot_value)
+        # print("Reminder Slot value:", rm_slot_value)
+
+        dispatcher.utter_message(template="utter_reminder_form_slots_values",
+                                time=time_slot_value,
+                                reminder_subject=rm_slot_value)
+
+        return [AllSlotsReset()]
+
+
+class ActionSplitGroup(Action):
+    def name(self) -> Text:
+        return "action_split_group"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        import requests
+        print(requests.get("https://reqres.in/api/users?page=2").json())
+
+        return []
+
+
 # class AskForSlotTime(Action):
 #     def name(self) -> Text:
 #         return "action_ask_reminder_form_time"
@@ -102,7 +137,7 @@ class ActionCreateReminder(Action):
 #     def run(
 #         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
 #     ) -> List[EventType]:
-#         dispatcher.utter_message(text="utter_ask_reminder_form_time")
+#         dispatcher.utter_message(template="utter_ask_reminder_form_time")
 #         return []
 
 
@@ -113,7 +148,7 @@ class ActionCreateReminder(Action):
 #     def run(
 #         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
 #     ) -> List[EventType]:
-#         dispatcher.utter_message(text="utter_ask_reminder_form_reminder_subject")
+#         dispatcher.utter_message(template="utter_ask_reminder_form_reminder_subject")
 #         return []
 
 
@@ -138,8 +173,9 @@ class ActionCreateReminder(Action):
 #         domain: Dict[Text, Any],
 #     ) -> List[Dict]:
 
-#         dispatcher.utter_message("utter_reminder_form_slots_values")
-#         return []
+#         dispatcher.utter_message(template="utter_reminder_form_slots_values")
+#         return [AllSlotsReset()]
+
 
 # class ActionCreateReminder(FormAction):
 #     """Example of a custom form action"""

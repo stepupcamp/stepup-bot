@@ -71,3 +71,8 @@ stories:
 #   - intent: deny
 #   - action: action_deactivate_loop
 #   - active_loop: null
+
+- story: inform reminder
+  steps:
+  - intent: inform_reminder
+  - action: action_inform_reminder

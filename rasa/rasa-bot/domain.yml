@@ -44,10 +44,11 @@ slots:
 actions:
   - action_valid_meeting
   - action_invalid_meeting
-  # - utter_ask_continue
   # - action_ask_reminder_form_time
   # - action_ask_reminder_form_reminder_subject
   - action_create_reminder
+  - action_split_group
+  - action_inform_reminder
 
 forms:
   reminder_form:

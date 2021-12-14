@@ -136,22 +136,26 @@ nlu:
     - Bot Schedule a meeting right now
     - Bot Could you start a meeting right now
     - Bot start meeting
-    - Please schedule a meeting for us
-    - start a meeting for us
-    - create a google meet for me
-    - launch a meeting for us
-    - create a meeting link for us
+    - Bot please schedule a meeting for us
+    - Bot start a meeting for us
+    - Bot create a google meet for me
+    - Bot launch a meeting for us
+    - Bot create a meeting link for us
 
 - intent: invalid_create_meeting
   examples: |
-    - Please schedule a meeting for tomorrow morning 6am!
-    - Can you schedule something for this evening 6pm?
-    - Start meeting every day at this time?
-    - Please create a google meet at 6pm...
-    - Start meeting every day same time?
-    - Can you start a meeting everyday at this time?
-    - Do start a similar meeting every sunday at the same time?
-    - How about making this a recurring meeting everyday at the 2pm?
+    - Bot please schedule a meeting for tomorrow morning 6am!
+    - Bot can you schedule something for this evening 6pm?
+    - Bot start meeting every day at this time?
+    - Bot please create a google meet at 6pm...
+    - Bot start meeting every day same time?
+    - Bot can you start a meeting everyday at this time?
+    - Bot do start a similar meeting every sunday at the same time?
+    - Bot how about making this a recurring meeting everyday at the 2pm?
+    - bot schedule a meeting for me at 2pm
+    - bot create a meeting for me tomorrow
+    - bot schedule a meeting for 7th June
+    - bot set a meeting for us on Saturday
 
 # - intent: inform_reminder
 #   examples: |
@@ -229,3 +233,20 @@ nlu:
     - [6am](time)
     - [tommorrow](time)
     - [everyday](time)
+    - [study](reminder_subject)
+    - [walk](reminder_subject)
+    - [cook](reminder_subject)
+    - [sell](reminder_subject)
+    - [buy](reminder_subject)
+    - [eat](reminder_subject)
+    - [call](reminder_subject)
+    - [dance](reminder_subject)
+    - [yoga](reminder_subject)
+    - [gym](reminder_subject)
+    - [exercise](reminder_subject)
+    - [play](reminder_subject)
+    - [watch](reminder_subject)
+    - [24th Jan](time)
+    - [10th March](time)
+    - [1st Feb](time)
+    - [9th sept](time)
