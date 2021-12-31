@@ -3,7 +3,7 @@ Getting started
 ~~~~~~~~~~~~~~~
 
 * Pull the docker image of duckling: ``docker pull rasa/duckling``
-* For installing rasa inside virtual environment check <https://rasa.com/docs/rasa/installation/>. Then to install some other dependencies do ``pip install google-auth==1.10.1 prompt-toolkit==2.0.10 questionary==1.4.0 SQLAlchemy==1.3.12 urllib3==1.25.7``
+* For rasa installation follow: <https://rasa.com/docs/rasa/installation/>.
 
 Running Application
 ~~~~~~~~~~~~~~~~~~~
